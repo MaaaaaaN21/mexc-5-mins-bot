@@ -1,0 +1,17 @@
+name: Restart Bot
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Runs every 12 hours
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Run Colab
+        run: |
+          pip install requests
+          python -c "import requests; requests.post('https://colab.research.google.com/drive/1eF6_Y0OvQutMEx814-5UG7jbdqYpTqgh?authuser=3#scrollTo=PUhCJlXS3QD3')"
